@@ -41,10 +41,12 @@ class AuthContainer extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <style>
                 :host {
-                    display: block;
+                    display: flex;
+                    flex-direction: column;
                     width: 100%;
-                    min-height: 100vh;
+                    height: 100%; /* ✅ se adapta al contenedor */
                     background-color: #f5f5f5;
+                    box-sizing: border-box;
                 }
                 
                 .auth-container {
@@ -67,9 +69,6 @@ class AuthContainer extends HTMLElement {
             </style>
 
             <div class="auth-container">
-                <div class="app-logo">
-                    <h1>Mi Agenda Virtual</h1>
-                </div>
                 
                 ${this.currentForm === "login" ? 
                     '<login-form></login-form>' : 
